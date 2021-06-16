@@ -1,0 +1,44 @@
+{
+  "name": "xgm-airdrop",
+  "version": "1.0.0",
+  "keywords": [
+    "ethereum",
+    "react",
+    "yarn"
+  ],
+  "private": true,
+  "scripts": {
+    "react-app:build": "yarn workspace react-app build --max-old-space-size=12288",
+    "react-app:eject": "yarn workspace react-app eject",
+    "react-app:start": "yarn workspace react-app start",
+    "react-app:test": "yarn workspace react-app test",
+    "build": "yarn workspace react-app build --max-old-space-size=12288",
+    "start": "yarn workspace react-app start",
+    "ipfs": "yarn workspace react-app ipfs",
+    "surge": "yarn workspace react-app surge",
+    "s3": "yarn workspace react-app s3",
+    "ship": "yarn workspace react-app ship",
+    "theme": "yarn workspace react-app theme",
+    "watch-theme": "yarn workspace react-app watch"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": [
+      "**/@graphprotocol/graph-ts",
+      "**/@graphprotocol/graph-ts/**",
+      "**/hardhat",
+      "**/hardhat/**"
+    ]
+  },
+  "dependencies": {
+    "needle": "^2.6.0",
+    "react-bootstrap": "^1.5.2",
+    "react-grid-layout": "^1.2.4",
+    "react-redux": "^7.2.2",
+    "react-twitter-auth": "^0.0.13",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0"
+  }
+}
