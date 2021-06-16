@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { Switch } from "antd";
-import { useThemeSwitcher } from "react-css-theme-switcher";
+import React, { useEffect, useState } from "react"
+import { Switch } from "antd"
+import { useThemeSwitcher } from "react-css-theme-switcher"
 
 export default function ThemeSwitcher() {
 
@@ -16,11 +16,6 @@ export default function ThemeSwitcher() {
     setIsDarkMode(isChecked);
     switcher({ theme: isChecked ? themes.dark : themes.light });
   };
-
-  // Avoid theme change flicker
-  // if (status === "loading") {
-  //   return null;
-  // }
 
   return (
     <div className="main fade-in" style={{position:"fixed",right:8,bottom:8}}>

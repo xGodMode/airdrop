@@ -1,18 +1,18 @@
 import React, { useCallback, useEffect, useState } from 'react'
 
-import { BrowserRouter as Router, NavLink, Route } from 'react-router-dom'
-import Erc20Container from './containers/Erc20Container'
-import Container from 'react-bootstrap/Container'
-
-import { Row, Col, Image, PageHeader } from 'antd'
-
+import { PageHeader } from 'antd'
 import { useUserAddress } from 'eth-hooks'
-import { Header, Account, Faucet, Ramp, Contract, GasGauge, ThemeSwitch } from './components'
-import { useExchangePrice, useGasPrice, useUserProvider, useContractLoader, useContractReader, useEventListener, useBalance, useExternalContractLoader } from './hooks'
 import { JsonRpcProvider, Web3Provider } from '@ethersproject/providers'
-import Web3Modal from 'web3modal'
+import Container from 'react-bootstrap/Container'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import WalletConnectProvider from '@walletconnect/web3-provider'
-import { INFURA_ID, DAI_ADDRESS, DAI_ABI, NETWORK, NETWORKS } from './constants'
+import Web3Modal from 'web3modal'
+
+import { Account, ThemeSwitch } from './components'
+import { INFURA_ID } from './constants'
+import Erc20Container from './containers/Erc20Container'
+import { useUserProvider } from './hooks'
+
 
 import 'antd/dist/antd.css'
 
@@ -55,10 +55,11 @@ function App() {
 
     return (
         <div className="App">
+            <ThemeSwitch />
                 <Router>
                     <Container>
                         <PageHeader
-                            title="XGM Airdrop Tool"
+                            title={<a href="/">xgm.studio/airdrop</a>}
                             className="site-page-header"
                             extra={[
                                 <Account

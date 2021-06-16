@@ -1,27 +1,18 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
-import "./index.css";
-import { ThemeSwitcherProvider } from 'react-css-theme-switcher';
+import React from "react"
+import { ThemeSwitcherProvider } from 'react-css-theme-switcher'
+import ReactDOM from "react-dom"
+import { Provider } from "react-redux"
 import {createStore, applyMiddleware, compose} from 'redux'
 import thunk from 'redux-thunk'
-import { Provider } from "react-redux";
-import { BrowserRouter as Router } from "react-router-dom";
-import rootReducer from "./reducers/manageSendersReceivers";
 
-import App from "./App";
+import App from "./App"
+import rootReducer from "./reducers/root"
 
+import "./index.css"
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 let store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)))
-
-let subgraphUri = "http://localhost:8000/subgraphs/name/scaffold-eth/your-contract"
-
-const client = new ApolloClient({
-  uri: subgraphUri,
-  cache: new InMemoryCache()
-});
 
 const themes = {
   dark: `${process.env.PUBLIC_URL}/dark-theme.css`,
@@ -30,11 +21,9 @@ const themes = {
 
 ReactDOM.render(
   <Provider store={store}>
-    <ApolloProvider client={client}>
     <ThemeSwitcherProvider defaultTheme="light" themeMap={themes} insertionPoint={document.getElementById('inject-styles-here')}>
-        <App subgraphUri={subgraphUri}/>
+      <App subgraphUri="REMOVE_THIS_PROP" />
     </ThemeSwitcherProvider>
-    </ApolloProvider>
   </Provider>,
   document.getElementById("root"),
-);
+)
